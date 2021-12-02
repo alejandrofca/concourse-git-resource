@@ -1,0 +1,32 @@
+resources:
+- name: once
+  type: time
+  source:
+    start: 07:00 PM
+    stop: 07:01 PM
+    location: America/Mexico_City
+
+jobs:
+- name: time-resource-once-job
+  plan:
+  - get: once
+    trigger: true
+  - task: time-resource-once-task
+    config:
+      platform: linux
+      image_resource:
+        type: registry-image
+        source:
+          repository: busybox
+      outputs:
+      - name: the-artifact
+      run:
+        path: sh
+        args:
+        - -cx
+        - |
+          ls -l .
+          echo "hello from another step!" > the-artifact/message
+          date
+          ls -l .
+          cat the-artifact/message
