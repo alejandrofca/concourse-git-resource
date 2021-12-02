@@ -1,32 +1,59 @@
 resources:
-- name: once
-  type: time
+- name: remote-code
+  type: git
   source:
-    start: 07:00 PM
-    stop: 07:01 PM
-    location: America/Mexico_City
+    uri: git@github.com:alejandrofca/concourse-git-resource.git
+    branch: main
+    private_key: |
+      -----BEGIN OPENSSH PRIVATE KEY-----
+      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
+      -----END OPENSSH PRIVATE KEY-----
+
+resources:
+- name: local-source
+  type: git
+  source:
+    uri: git@github.com:alejandrofca/concourse-git-resource.git
+    branch: main
 
 jobs:
-- name: time-resource-once-job
+- name: push-local-commits
   plan:
-  - get: once
-    trigger: true
-  - task: time-resource-once-task
-    config:
-      platform: linux
-      image_resource:
-        type: registry-image
-        source:
-          repository: busybox
-      outputs:
-      - name: the-artifact
-      run:
-        path: sh
-        args:
-        - -cx
-        - |
-          ls -l .
-          echo "hello from another step!" > the-artifact/message
-          date
-          ls -l .
-          cat the-artifact/message
+  - get: local-source
+  - put: remote-code
+    params: {repository: local-source}
