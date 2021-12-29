@@ -5,7 +5,7 @@ resources:
     uri: https://github.com/alejandrofca/concourse-git-resource.git
 
 jobs:
-- name: hello-world-job
+- name: hello-world-job2
   plan:
   - get: repo
     trigger: true
